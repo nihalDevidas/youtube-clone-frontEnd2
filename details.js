@@ -73,7 +73,7 @@ function addDetailsTopage(vedioInfo, chaDetails){
                  <span class="share-sym">SHARE</span>
              </div>
              <div class="save-con">
-                 <img src="../youClone/p2image/Save.png" alt="image text">
+                 <img src="p2image/Save.png" alt="image text">
                  <span class="save-sym">SAVE</span>
              </div>
          </div>
