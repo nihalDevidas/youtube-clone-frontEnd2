@@ -1,14 +1,22 @@
 *{
     padding:0px;
     margin: 0px;
+    font-family:"Roboto";
+    
+}
+html,body{
+    padding:0px;
+    margin: 0px;
 }
 body{
-    padding: 3% 2.5% 0px 16%;
+    padding: 12% 2.5% 0px 17%;
+    background-color:black;
+    
 }
 
 /* css for navigation bar */
 .header-container{
-    background-color: rgb(85, 81, 81);
+    background-color:#303030;
     height:65px;
 
     display:flex;
@@ -18,35 +26,42 @@ body{
     left:0px;
     right:0px;
 
+    z-index:2;
+
 }
 .left{
-    border: 1px solid;
+    
     width:180px;
     display:flex;
     justify-content: space-evenly;
     align-items: center;
 
 }
+/* left contents */
 .berger{
     font-size:22px;
+    color:rgb(203, 203, 203);
 }
 
 
-
 .center{
-    border: 1px solid;
+    
     display:flex;
     align-items: center;
     width:50%;
     margin-left:20px;
     
 }
+/* center contents */
 .searchVal{
     width:75%;
     height:44px;
     box-sizing: border-box;
     border-radius: 22px 0px 0px 22px;
     padding-left:10px;
+    background-color: #171616;
+    border:none;
+    color:rgb(203, 203, 203);
 }
 ::placeholder{
     font-size:18px;  
@@ -56,6 +71,9 @@ body{
     width:70px;
     height:44px;
     border-radius: 0px 22px 22px 0px;
+    border:none;
+    background-color:#403f3f;
+    color:rgb(203, 203, 203);
 
 }
 .magnify-btn{
@@ -66,10 +84,12 @@ body{
     height:40px;
     border-radius:50%;
     border:1px solid;
+    background-color: #121212;
 
     display:flex;
     justify-content: center;
     align-items: center;
+    transition: background-colcor 0.16s;
 
     margin-left:20px;
 }
@@ -77,7 +97,6 @@ body{
 
 
 .right{
-    border: 1px solid;
 
     width:210px;
     display:flex;
@@ -85,16 +104,93 @@ body{
     align-items: center;
 }
 
+.search-topics-container{
 
+    background-color:#303030;
+    border-top: 0.1px solid rgb(75, 75, 75);;
+    border-bottom: 0.1px solid rgb(81, 81, 81);;
+    min-height:57px;
+    position:fixed;
+    left:15%;
+    right:0px;
+    top:65px;
 
+    display:flex;
+    align-items: center;
+    z-index:2;
+    
+    
+}
+ul{
+    list-style-type: none;
+    padding-top:10px;
+    width:95%;
 
+    display:flex;
+    align-items: center;
+    overflow-x: scroll;
 
+}
+::-webkit-scrollbar{
+    visibility:hidden;
+}
+.item{
+    border:0.1px solid rgb(131, 131, 132);
+    padding: 5px 10px;
+    color:aliceblue;
+    border-radius:10px;
+    margin-right:10px;
+    white-space: nowrap;
+    font-size:15px;
+    background-color:#403f3f;
+}
 
+.side-navigation{
 
+    position:fixed;
+    top:65px;
+    left:0px;
+    bottom:0px;
+    width: 15%;
+    background-color:#303030;
+    overflow-y: scroll;
+    z-index:3;
+   
 
+}
+.content{
+    
+    width: 95%;
+    height:47px;
+    display:grid;
+    grid-template-columns: 40px 1fr ;
+    box-sizing: border-box;
+    color:aliceblue;
+    
+    align-items: center;
+    padding-left:20px;
+    margin:10px 0px;
+    transition: background-color 0.16s;
 
+}
+.content:hover{
+    background-color: rgba(107, 105, 105, 0.6);
+}
+hr{
+    margin: 40px 0px;
+    border:0.5px solid#504f4f;
+}
+.sub{
+    padding-left:10px;
+    color:aliceblue;
+    margin-bottom:20px;
 
-
+}
+.content > .spn1>img{
+    height:40px;
+    width:40px;
+    border-radius:50%;
+}
 
 
 
@@ -106,6 +202,7 @@ body{
     grid-template-columns: repeat(auto-fit,minmax(315px, 1fr));
     row-gap: 44px;
     column-gap: 15px;
+    background-color:black;
 
     width:100%;
     border:1px solid;
@@ -151,6 +248,12 @@ body{
    bottom:7px;
 }
 
+.image-a{
+    width:inherit;
+    height:inherit;
+    text-decoration: none;
+
+}
 .thumnail-img
 {
     width:100%;
@@ -182,9 +285,73 @@ body{
     font-family:"Roboto" ;
     font-size: 14px;
     font-weight: bold;
+    color:rgb(219, 222, 224);
 }
 .more-info{
     font-family:"Roboto";
     font-size: 14px;
     
+}
+.uploaded-time-span, .views-count,.youtuber-name{
+    color:rgb(131, 131, 132);
+}
+
+.item:hover{
+
+    opacity:0.7;
+    cursor: pointer;
+}
+ .searchBtn:hover{
+
+    opacity:0.7;
+    cursor: pointer;
+ }
+.content:hover{
+
+    opacity:0.7;
+    cursor: pointer;
+} 
+.icon:hover{
+
+    opacity:0.7;
+    cursor: pointer;
+}
+.mic:hover{
+    background-color: rgba(40, 39, 39, 0.8);
+    cursor: pointer;
+    border:none;
+}
+
+@media(max-width:1080px){
+    .side-navigation{
+        display:none;
+    }
+    body{
+        padding: 12% 2.5% 0px 0px;
+    }
+    .search-topics-container{
+        position: fixed;
+        left:0px;
+    }
+    .mic{
+        display:none;
+    }
+    
+}
+@media (max-width: 500px){
+    .searchBtn{
+        width:44px;
+        height:44px;
+        border:none;
+        border-radius: 0px 0px 0px 0px;
+        background-color:#403f3f;
+        color:rgb(203, 203, 203);
+    
+    }
+    .searchVal{
+        display: none;
+    }
+    .berger{
+        display: none;
+    }
 }
