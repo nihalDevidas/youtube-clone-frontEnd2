@@ -3,7 +3,7 @@ const searchButton = document.getElementById("search-btn");
 const mainContainer = document.getElementById("main-data-container01");
 
 
-const APIKey = "AIzaSyCXDn0knkHxalLJvY4LQu2BaPaR5dKk6bI";
+const APIKey = "AIzaSyCsjgBXCLYBi8eV0tdLqtpoWOBX-UrUD8s";
                  
 const baseUrl = "https://www.googleapis.com/youtube/v3/";
 
@@ -79,10 +79,9 @@ function assingEvents(){
     const cardArray = Array.from(cards);
 
     cardArray.forEach((card)=>{
-
-          card.addEventListener('click',(e)=>{
-                  const vedeoId = e.target.id;
-                  localStorage.setItem('vedeoId',vedeoId);
+        const vedeoId = card.id;
+          card.addEventListener('click',()=>{
+                  localStorage.setItem("vedeoId",vedeoId);
           });
     });
 }
