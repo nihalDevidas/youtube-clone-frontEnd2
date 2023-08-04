@@ -33,6 +33,8 @@ async function fetchData(searchStringVal){
 }
 
 function displayUIdata(contentArray){
+     mainContainer.innerHTML = "";
+  
     contentArray.forEach((vedioInfo)=>{
 
         const {snippet} = vedioInfo;
