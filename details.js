@@ -1,9 +1,11 @@
-const vedeoId = localStorage.getItem('vedeoId');
+const vedeoId = localStorage.getItem("vedeoId");
+console.log(vedeoId);
 
 
 const mainCon = document.getElementById("mc1");
+const commentCon = document.getElementById("coment-con");
 
-const APIKey = "AIzaSyCXDn0knkHxalLJvY4LQu2BaPaR5dKk6bI";
+const APIKey = "AIzaSyCsjgBXCLYBi8eV0tdLqtpoWOBX-UrUD8s";
                  
 const baseUrl = "https://www.googleapis.com/youtube/v3/";
 
@@ -20,7 +22,7 @@ async function fetchChannelDetails(chId){
 
 }
 
-async function fetchVedioDetails(vedioId="28ewOqp-5ds"){
+async function fetchVedioDetails(vedioId){
 
     let url = `${baseUrl}videos?key=${APIKey}&part=snippet,statistics&id=${vedioId}`;
 
@@ -30,13 +32,14 @@ async function fetchVedioDetails(vedioId="28ewOqp-5ds"){
     const chanelDetails = await fetchChannelDetails(vedioInfo.items[0].snippet.channelId);
 
 
-     //console.log(vedioInfo);
-    addDetailsTopage(vedioInfo, chanelDetails);
+     console.log(vedioInfo);
+   addDetailsTopage(vedioInfo, chanelDetails);
 
 }
 
 function addDetailsTopage(vedioInfo, chaDetails){
 
+    mainCon.innerHTML = "";
     const container = document.createElement("div");
           container.className = "vedio-content";
 
@@ -44,9 +47,9 @@ function addDetailsTopage(vedioInfo, chaDetails){
      <div class="vedio-container">
      </div>
      <p class="despt">
-      ${vedioInfo.snippet.title}
+      ${vedioInfo.items[0].snippet.title}
      </p>
-
+      <hr>
      <div class="statistics">
 
          <div class="part1">
@@ -80,6 +83,8 @@ function addDetailsTopage(vedioInfo, chaDetails){
 
      </div>
 
+     <hr>
+
      <div class="channel-info">
          <div class="upper-part">
 
@@ -95,10 +100,11 @@ function addDetailsTopage(vedioInfo, chaDetails){
          </div>
 
          <p class="lower-sesp">
-             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione ipsa tempore tenetur odio at doloremque illum, minima animi maiores quod error adipisci ducimus! Fuga ullam laboriosam quis praesentium ut distinctio.
+             ${vedioInfo.items[0].snippet.description}
          </p>
          
      </div>
+     <hr>
      `;  
      
      container.innerHTML = content;
@@ -106,5 +112,32 @@ function addDetailsTopage(vedioInfo, chaDetails){
 }
 
 
+async function fetchComments(vedioId){
+    let url = `${baseUrl}commentThreads?key=${APIKey}&part=snippet&videoId=${vedioId}`;
+
+    const response = await fetch(url);
+    const result = await response.json();
+
+    console.log(result);
+
+    displayComments(result.items);
+
+}
+
+function displayComments(comments){
+    comments.forEach(element => {
+        const ele = document.createElement("div");
+        ele.className = "comment-container";
+        const el = `
+        <span>${element.snippet.topLevelComment.snippet.textDisplay}</span>
+        <span><i class="fa-solid fa-share"></i></span>
+        `;
+        
+        ele.innerHTML = el;
+        commentCon.appendChild(ele);
+    });
+}
+
 
 fetchVedioDetails(vedeoId);
+fetchComments(vedeoId);
