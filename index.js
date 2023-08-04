@@ -4,8 +4,10 @@ const mainContainer = document.getElementById("main-data-container01");
 
 
 const APIKey = "AIzaSyCXDn0knkHxalLJvY4LQu2BaPaR5dKk6bI";
-const baseUrl = " https://www.googleapis.com/youtube/v3/";
+                 
+const baseUrl = "https://www.googleapis.com/youtube/v3/";
 
+fetchData("");
 let recievedData;
 
 searchButton.addEventListener('click', ()=>{
@@ -17,15 +19,17 @@ searchButton.addEventListener('click', ()=>{
 });
 
 
+
 async function fetchData(searchStringVal){
 
     let maxSearchValue = searchStringVal ? 30 : 21;
 
-     const urlData = `${baseUrl}search?key=${APIKey}&q=${searchStringVal}&part=snippet&maxResults=${maxSearchValue}`;
-     let response = await fetch(urlData, {method: "GET"});
-     recievedData = await response.json(); 
-
-     displayUIdata(recievedData.items);
+        const urlData = `${baseUrl}search?key=${APIKey}&q=${searchStringVal}&part=snippet&maxResults=${maxSearchValue}`;
+        const response = await fetch(urlData,{method: "GET"});
+        recievedData = await response.json(); 
+   
+        displayUIdata(recievedData.items);
+   
 }
 
 function displayUIdata(contentArray){
@@ -35,10 +39,12 @@ function displayUIdata(contentArray){
 
         const cardContainer = document.createElement("div");
         cardContainer.classList.add("card-container");
-
+ 
         const yutuberData = `
-        <div class="card-image" id=${vedioInfo.id.videoId}>
-            <img class = "thumnail-img" src=${snippet.thumbnails.high.url} alt="image text">
+        <div class="card-image">
+           <a href = "details.html" class="image-a"  id=${vedioInfo.id.videoId}>
+             <img class = "thumnail-img" src=${snippet.thumbnails.high.url} alt="image text">
+            </a>
             <span class="vedio-duration">23:14</span>
         </div>
 
@@ -60,5 +66,26 @@ function displayUIdata(contentArray){
 
 
     });
+
+    assingEvents();
 }
+
+
+// functionality to pass vedio id
+
+function assingEvents(){
+    const cards = document.getElementsByClassName("image-a");
+
+    const cardArray = Array.from(cards);
+
+    cardArray.forEach((card)=>{
+
+          card.addEventListener('click',(e)=>{
+                  const vedeoId = e.target.id;
+                  localStorage.setItem('vedeoId',vedeoId);
+          });
+    });
+}
+
+
 
