@@ -104,43 +104,54 @@ html,body{
     border:none;
 }
 
+/* main csss */
+
 .parent-container{
     margin-top:90px;
+    /* border: 1px solid white; */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 .main-content{
-    width:80%;
+    width:90%;
+    /* border: 1px solid white; */
+    display:flex;
+    justify-content: center;
    
     
     
 }
 .vedio-content{
-    width:80%;
-    margin-inline:auto;
+   width: 85%;
+    /* border: 1px solid red; */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .vedio-container{
-    border: 1px solid;
-    width: 80%;
-    height:400px;
-    margin-inline:auto;
+    border: 1px solid white;
+    width: inherit;
+    min-height:450px;
+
 }
 .despt{
     font-size: 23px;
-    padding: 20px 10px;
-    width: 80%;
-    margin-inline:auto;
+    padding: 30px 10px 10px 10px ;
+    width: inherit;
     color:rgb(203, 203, 203);
 }
 
 .statistics{
    
-    width:80%;
+    width:inherit;
     height:50px;
     display:flex;
     justify-content:space-between ; 
-    margin-inline:auto;
+   
 }
 .upper-part{
     padding: 8px 20px;
@@ -168,8 +179,8 @@ html,body{
 
 .channel-info{
     
-    width:80%;
-    margin-inline:auto;
+    width:inherit;
+    
 }
 .channel-img-container{
   display:flex;
@@ -201,24 +212,30 @@ html,body{
     border-radius:3px;
 }
 .comments-container{
-    width:80%;
+    width:75%;
     margin-inline:auto;
     padding: 20px 5px;
-    border:1px solid;
+    
 }
 .comments{
-    width:80%;
+    width:75%;
     margin-inline:auto;
     padding: 20px 5px;
    
     
 }
+.comment-container{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:30px; 
+    border-bottom: 0.5px solid #504f4f; 
+    padding:5px 5px;
+}
 i{
     color:rgb(203, 203, 203);
 }
 hr{
-    margin: 40px 0px;
-    margin-inline: auto;
-    width:80%;
-    border:0.5px solid#504f4f;
+    margin: 30px 0px;
+    width:inherit;
+    border:0.5px solid #504f4f;
 }
